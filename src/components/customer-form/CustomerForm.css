@@ -1,0 +1,16 @@
+.customer-form
+{
+    margin: 3% 20%;
+}
+
+.customer-form h3
+{
+    float: left;
+    margin-bottom: 20px;
+}
+
+.select-option
+{
+    display: flex;
+    justify-content: center;
+}

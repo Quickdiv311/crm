@@ -1,0 +1,23 @@
+.main-header
+{
+    display: flex;
+    height: 60px;
+    background-color: black;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.right-header
+{
+    display: flex;
+}
+
+.topic{
+    margin-left: 20px;
+}
+
+.header-topic
+{
+    margin-right:20px;
+}

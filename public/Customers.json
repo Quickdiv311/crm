@@ -1,0 +1,18 @@
+[
+ {
+    "name": "Cognizant",
+    "website": "www.Cognizant.com",
+    "revenue": "120000000000",
+    "numberOfEmployees": "300000",
+    "ceo": "Brian Humphires",
+    "establishedYear": "1908"
+ },
+ {
+    "name": "TCS",
+    "website": "www.tcs.com",
+    "revenue": "110000000000",
+    "numberOfEmployees": "250000",
+    "ceo": "Ratan Tata",
+    "establishedYear": "1890"
+ }
+]
