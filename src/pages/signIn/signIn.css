@@ -1,0 +1,48 @@
+.right-signin
+{
+    border-left: 1px solid lightblue;
+    padding: 100px 150px;
+    padding-right: 50px;
+    width: 50%;
+}
+
+.right-signin label
+{
+  color: lightslategray;
+  font-weight: bold;
+}
+
+.signin-container
+{
+   display: flex;
+   margin: 6% 12%;
+}
+
+.signin-container h2
+{
+  margin-bottom: 30px;    
+}
+
+.btn-container
+{
+    display: flex;
+    justify-content: end;
+}
+
+.left-signin{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left-signin img
+{
+  width: 50vw;
+}
+
+.sign-upLink
+{
+  color: rgb(54, 83, 163);
+  font-weight: bolder;
+}
