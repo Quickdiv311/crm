@@ -15,6 +15,25 @@ const Users = () => {
      .then((res) => setUsers(res));
   },[])
 
+  function handleActive(username)
+  {
+    fetch("http://localhost:4000/api/user/activate/"+username,{
+      method: "PUT",
+    })
+    .then((res) => res.json())
+    .then((res) => setUsers(res));
+  }
+
+  function handleDeactive(username)
+  {
+    fetch("http://localhost:4000/api/user/deActivate/"+username,{
+      method: "PUT",
+    })
+    .then((res) => res.json())
+    .then((res) => setUsers(res));
+  }
+
+
   return (
     <div>
         <Header/>
@@ -41,8 +60,8 @@ const Users = () => {
                       <td>{user.password}</td>
                       <td>
                       {user.isActive ? 
-                      <button className="btn btn-danger btn-users">Deactivate</button> : 
-                      <button className="btn btn-success btn-users">Activate</button>}
+                      <button className="btn btn-danger btn-users" onClick={() => handleDeactive(user.username)}>Deactivate</button> : 
+                      <button className="btn btn-success btn-users" onClick={() => handleActive(user.username)}>Activate</button>}
                       </td>
                       </tr>
                     ))

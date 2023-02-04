@@ -49,9 +49,8 @@ const CustomerForm = () => {
 
   function handleEdit()
   {
-    fetch("http://localhost:4000/api/customer",{
+    fetch("http://localhost:4000/api/customer"+"",{
       method: "PUT",
-      body: JSON.stringify(customer),
       headers: {
         "Content-Type": "application/json"
       }
@@ -62,54 +61,64 @@ const CustomerForm = () => {
   return (
     <div className="new-customer">
       <Header/>
+     
     <div className='customer-form'>
-      <h3>Add a new customer</h3>
-      <input type="text" className='form-control mb-3' value={customer.name} onInput={e => {
+      <h3 className='mb-3'>Add a new customer</h3>
+      
+      <input type="text" name="CompanyName" className='form-control mb-3 mt-3' value={customer.name} onInput={e => {
         let obj = {...customer};
         obj.name = e.target.value;
         setCustomer(obj);
-      }} placeholder='Company Name'/>
+      }} placeholder="Company Name"/>
 
-      <input type="text" className='form-control mb-3' value={customer.website} onInput={e => {
+      <label htmlFor="Website">Website</label>
+      <input type="text" name="Website" className='form-control mb-3' value={customer.website} onInput={e => {
          let obj = {...customer};
          obj.website = e.target.value;
          setCustomer(obj);
+      }}/>
 
-      }} placeholder='Website'/>
       <div className="row">
+
       <div className="mb-3 col-6">
-      <input type="number" className='form-control' value={customer.turnover} onInput={e => {
+      <label htmlFor="Revenue">Revenue</label>
+      <input name="Revenue" type="number" className='form-control' value={customer.turnover} onInput={e => {
         let obj = {...customer};
         obj.turnover = e.target.value;
         setCustomer(obj);
-
-      }} placeholder='Revenue'/>
+      }}/>
       </div>
+
       <div className="mb-3 col-6">
-      <input type="number" className='form-control' value={customer.employees} onInput={e => {
+      <label htmlFor="emp">Number of Employees</label>
+      <input name="emp" type="number" className='form-control' value={customer.employees} onInput={e => {
         let obj = {...customer};
         obj.employees = e.target.value;
         setCustomer(obj);
+      }}/>
+      </div>
 
-      }} placeholder='Number of Employees'/>
       </div>
-      </div>
+
       <div className="row">
+
       <div className="mb-3 col-6">
-      <input type="text" className='form-control' value={customer.ceo} onInput={e => {
+      <label htmlFor="CEO">CEO</label>
+      <input name="CEO" type="text" className='form-control' value={customer.ceo} onInput={e => {
         let obj = {...customer};
         obj.ceo = e.target.value;
         setCustomer(obj);
-
-      }} placeholder='CEO'/>
+      }}/>
       </div>
+
       <div className="mb-3 col-2">
-      <select className="form-select" aria-label=".form-select-sm example" value={customer.year} onInput={e => {
+        <label htmlFor="estd">Estd. In</label>
+      <select name="estd" className="form-select" aria-label=".form-select-sm example" value={customer.year} onInput={e => {
          let obj = {...customer};
          obj.year = e.target.value;
          setCustomer(obj);
          }}>
-  <option value="" selected hidden>Estd. In</option>
+  <option value="" selected hidden>Select:</option>
   {
     years.map((year) => (
 <option value={year} className="select-option">{year}</option>
@@ -118,6 +127,15 @@ const CustomerForm = () => {
   
 </select>
       </div>
+      </div>
+      <div className="mb-3 col-2">
+        <label htmlFor="status">Status</label>
+        <select name="status" className="form-select" aria-label=".form-select-sm example"  value={customer.status} onInput={e => setCustomer({...customer,status: e.target.value})}>
+          <option value="" selected hidden>Select:</option>
+          <option value="New">New</option>
+          <option value="Accepted">Accepted</option>
+          <option value="Rejected">Rejected</option>
+        </select>
       </div>
       <div className="btn-container mb-3">
         {

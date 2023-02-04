@@ -36,3 +36,70 @@ tr .btn-danger
     color: black;
     border: none;
 }
+
+.row-blue
+{
+    color: white;
+    background-color: rgb(0, 195, 255);
+}
+
+.row-red
+{
+    color: white;
+    background-color: rgb(243, 112, 112);
+}
+
+.row-green
+{
+    color: white;
+    background-color: rgb(87, 194, 87);
+}
+
+.btn-search
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 70px;
+}
+
+.search-container
+{
+    display: flex;
+    align-items: center;
+    border-radius: 999px 999px 999px 999px;
+    height: 40px;
+    padding: 10px 20px;
+    background-color: wheat;
+}
+
+.search-container input
+{
+    border: none;
+    outline: none;
+    background-color: inherit;
+    margin-right: 10px !important;
+}
+
+.tiles
+{
+    display: flex;
+    margin-bottom: 15px;
+    margin-top: 30px;
+    justify-content: space-w;
+    width: 97%;;
+}
+
+.tiles div
+{
+   height: 150px;
+   width: 300px;
+   margin-right: 20px;
+   padding: 30px;
+}
+
+.tile
+{
+    background-color: rgb(236, 173, 102);
+    color: white;
+}
