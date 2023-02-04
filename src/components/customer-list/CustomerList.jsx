@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Paginator from '../paginator/paginator';
+import Dashboard from '../Tiles/Dashboard';
 import './CustomerList.css';
 
 const CustomerList = () => {
 
     const [customers, setCustomers] = useState([]);
     const [filteredCustomers, setfilteredCustomers] = useState([]);
-    const [newCustomers, setNewCustomers] = useState([]);
-    const [acceptedCustomers, setAcceptedCustomers] = useState([]);
-    const [rejectedCustomers, setRejectedCustomers] = useState([]);
+    const [count, setCount] = useState({});
 
     const navigate = useNavigate();
 
@@ -20,9 +19,16 @@ const CustomerList = () => {
         {
           setCustomers(res);
           setfilteredCustomers(res);
-          setNewCustomers(res.filter(c => c.status === "New"));
-          setAcceptedCustomers(res.filter(c => c.status === "Accepted"));
-          setRejectedCustomers(res.filter(c => c.status === "Rejected"));
+          let newCount = res.filter(c => c.status === "New").length;
+          let acceptedCount = res.filter(c => c.status === "Accepted").length;
+          let rejectedCount = res.filter(c => c.status === "Rejected").length;
+          let countObj = {
+            "new": newCount,
+            "accepted": acceptedCount,
+            "rejected": rejectedCount,
+            "total": res.length
+          }
+          setCount(countObj);
         }
         );
     },[]);
@@ -69,29 +75,21 @@ const CustomerList = () => {
         {
           let filteredCustomers =  customers.filter(customer => customer.name.toLowerCase().includes(val.toLowerCase()));
           setfilteredCustomers([...filteredCustomers]);
-          setNewCustomers(filteredCustomers.filter(c => c.status === "New"));
-          setAcceptedCustomers(filteredCustomers.filter(c => c.status === "Accepted"));
-          setRejectedCustomers(filteredCustomers.filter(c => c.status === "Rejected"));
+          setCount({total: filteredCustomers.length,new: filteredCustomers.filter(c => c.status === "New").length, accepted: filteredCustomers.filter(c => c.status === "Accepted").length,
+          rejected: filteredCustomers.filter(c => c.status === "Rejected").length});
         }
         else
         {
           setfilteredCustomers(customers);
-          setNewCustomers(customers.filter(c => c.status === "New"));
-          setAcceptedCustomers(customers.filter(c => c.status === "Accepted"));
-          setRejectedCustomers(customers.filter(c => c.status === "Rejected"));
+          setCount({total: customers.length,new: customers.filter(c => c.status === "New").length, accepted: customers.filter(c => c.status === "Accepted").length,
+          rejected: customers.filter(c => c.status === "Rejected").length});
         }
     }
 
   return (
     <div className='customer-list'>
       <h1 className='mb-3'>Customer List</h1>
-      <div className="tiles">
-        <div className="tile"><h3>
-        All Entries </h3> <h2>{filteredCustomers.length}</h2></div>
-        <div className="row-blue tileN"> <h3>New</h3>  <h2>{newCustomers.length}</h2></div>
-        <div className="row-green tileA"> <h3>Accepted</h3><h2>{acceptedCustomers.length}</h2></div>
-        <div className="row-red tileR"> <h3>Rejected</h3><h2>{rejectedCustomers.length}</h2></div>
-      </div>
+      <Dashboard count = {count}/>
       <div className='btn-search'>
         <Link className="btn btn-primary mb-3 mt-3" to="/form">Add new Customer</Link>
         <div className="search-container">

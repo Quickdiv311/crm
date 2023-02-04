@@ -81,25 +81,4 @@ tr .btn-danger
     margin-right: 10px !important;
 }
 
-.tiles
-{
-    display: flex;
-    margin-bottom: 15px;
-    margin-top: 30px;
-    justify-content: space-w;
-    width: 97%;;
-}
 
-.tiles div
-{
-   height: 150px;
-   width: 300px;
-   margin-right: 20px;
-   padding: 30px;
-}
-
-.tile
-{
-    background-color: rgb(236, 173, 102);
-    color: white;
-}
