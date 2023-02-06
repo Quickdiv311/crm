@@ -56,10 +56,6 @@ const CustomerList = () => {
     {
       fetch("http://localhost:4000/api/customer/"+name,{
         method: "DELETE",
-        body: JSON.stringify(customers),
-        headers: {
-          "Content-Type": "application/json"
-        }
       })
       .then(res => res.json())
       .then(res => {setCustomers(res);setfilteredCustomers(res)});

@@ -46,6 +46,7 @@ const CustomerForm = () => {
   {
     fetch("http://localhost:4000/api/customer",{
       method: "PUT",
+      body: JSON.stringify(customer),
       headers: {
         "Content-Type": "application/json"
       }
