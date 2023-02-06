@@ -80,5 +80,10 @@ tr .btn-danger
     background-color: inherit;
     margin-right: 10px !important;
 }
+.pagin
+{
+    display: flex;
+    justify-content: center;
+}
 
 

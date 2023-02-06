@@ -15,15 +15,10 @@ const CustomerForm = () => {
 
     if(customerName)
     {
-      fetch("http://localhost:4000/api/customer")
+      fetch("http://localhost:4000/api/customer/"+customerName)
       .then(res => res.json())
       .then((res) => {
-       let result = res.find(c => c.name === customerName);
-  
-       if(result)
-       {
-         setCustomer(result);
-       }
+         setCustomer(res);
       })
     }  
 
@@ -49,7 +44,7 @@ const CustomerForm = () => {
 
   function handleEdit()
   {
-    fetch("http://localhost:4000/api/customer"+"",{
+    fetch("http://localhost:4000/api/customer",{
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
