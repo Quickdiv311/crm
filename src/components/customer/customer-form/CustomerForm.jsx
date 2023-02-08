@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {  useNavigate, useParams } from 'react-router-dom';
-import Header from '../Header/Header';
+import Header from '../../Header/Header';
 import './CustomerForm.css';
 
 const CustomerForm = () => {

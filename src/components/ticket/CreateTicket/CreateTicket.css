@@ -1,0 +1,10 @@
+.create-ticket
+{
+    margin: 2% 30%;
+}
+
+.select-option
+{
+    display: flex;
+    justify-content: center;
+}

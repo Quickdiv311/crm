@@ -1,4 +1,4 @@
-import CustomerList from '../../components/customer-list/CustomerList';
+import CustomerList from '../../components/customer/customer-list/CustomerList';
 import Header from '../../components/Header/Header';
 import './customers.css';
 

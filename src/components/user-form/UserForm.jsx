@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Header from '../Header/Header';
 import './UserForm.css';
 
 const UserForm = () => {
@@ -21,6 +22,8 @@ const UserForm = () => {
  }
 
   return (
+    <div>
+      <Header/>
     <div className='userform-container'>
        <h2 className='mb-3'>User Form</h2>
       <label htmlFor="name" className='mb-2 mt-3'>Name</label>
@@ -36,6 +39,7 @@ const UserForm = () => {
       <div className="btn-container">
         <button className="btn btn-success" onClick={handleSubmit}>Add user to list</button>
       </div>
+    </div>
     </div>
   );
 }

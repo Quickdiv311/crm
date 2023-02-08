@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Paginator from '../paginator/paginator';
-import Dashboard from '../Tiles/Dashboard';
+import Paginator from '../../paginator/paginator';
+import Dashboard from '../../Tiles/Dashboard';
 import './CustomerList.css';
 
 const CustomerList = () => {
 
     const [customers, setCustomers] = useState([]);
+    const [searchInput, setSearchInput] = useState();
     const [filteredCustomers, setfilteredCustomers] = useState([]);
     const [count, setCount] = useState({});
     const [pages, setPages] = useState([]);
@@ -81,6 +82,7 @@ const CustomerList = () => {
 
     function handleInput(val)
     {
+        setSearchInput(val);
         if(val)
         {
           let filteredCustomers =  customers.filter(customer => customer.name.toLowerCase().includes(val.toLowerCase()));
@@ -104,9 +106,13 @@ const CustomerList = () => {
         <Link className="btn btn-primary mb-3 mt-3" to="/form">Add new Customer</Link>
         <div className="search-container">
           <input type="search" onInput={e => handleInput(e.target.value)} placeholder="Search"/>
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search search-icon" viewBox="0 0 16 16">
+          {
+                !searchInput && 
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search search-icon" viewBox="0 0 16 16">
   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-</svg>
+</svg> 
+          }
+          
         </div>
       </div>
       {
@@ -114,6 +120,7 @@ const CustomerList = () => {
          <table className='table mt-3'>
       <thead>
             <tr>
+              <th></th>
                 <th>Name</th>
                 <th>Reveue</th>
                 <th>Status</th>
@@ -127,6 +134,7 @@ const CustomerList = () => {
                 {
                     filteredCustomers.map((customer) =>  
                         (<tr className={handleColor(customer.status)} style={{border: "none"}}>
+                          <td></td>
                         <td>{customer.name}</td>
                         <td>{customer.turnover.toString()}</td>
                         <td>{customer.status}</td>
