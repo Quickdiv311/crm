@@ -1,0 +1,24 @@
+.search-container
+{
+    display: flex;
+    align-items: center;
+    border-radius: 999px 999px 999px 999px;
+    height: 40px;
+    padding: 10px 20px;
+    background-color: rgb(44, 134, 218);
+    color: white;
+}
+
+.search-container input
+{
+    color: white;
+    border: none;
+    outline: none;
+    background-color: inherit;
+    margin-right: 10px !important;
+}
+
+::placeholder
+{
+    color: white;
+}

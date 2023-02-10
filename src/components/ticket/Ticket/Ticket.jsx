@@ -1,17 +1,26 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Search from '../../search/Search';
+import Dashboard from '../../Tiles/Dashboard';
 import './Ticket.css';
 
 const Ticket = () => {
 
   const [tickets, setTickets] = useState([]);
+  const [filteredTickets, setFilteredTickets] = useState([]);
+  const [count, setCount] = useState();
+
+  const [searchInput, setSearchInput] = useState();
   let navigate = useNavigate();
 
   useEffect(() => {
      fetch("http://localhost:4000/api/ticket")
      .then(res => res.json())
-     .then(res => setTickets(res));
+     .then(res => 
+      {setTickets(res)
+       setFilteredTickets(res)
+      });
   },[]);
 
   function color(value)
@@ -42,10 +51,27 @@ const Ticket = () => {
      navigate('/ticketForm/'+desc);
   }
 
+  function handleSearch(value)
+  {
+     if(value)
+     {
+      let result = tickets.filter(t => t.desc.toLowerCase().includes(value.toLowerCase()));
+      setFilteredTickets(result);
+     }
+     else
+     {
+       setFilteredTickets(tickets);
+     }
+  }
+
   return (
    <div className="ticket-list">
     <h2>Tickets List</h2>
+    {/* <Dashboard count={count}/> */}
+    <div className="ticketList-header">
     <button className="btn btn-primary mt-3 mb-3" onClick={() => navigate("/ticketForm")}>Create New Ticket</button>
+    <Search searchInput={searchInput} handleInput={handleSearch}/>
+    </div>
      <table className="table mt-3">
         <thead>
             <tr>
@@ -59,7 +85,7 @@ const Ticket = () => {
         </thead>
         <tbody>
             {
-              tickets.map((ticket) => (
+              filteredTickets.map((ticket) => (
                 <tr className={color(ticket.status)}>
                   <td></td>
                     <td>{ticket.customer}</td>

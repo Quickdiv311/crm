@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Header from '../../Header/Header';
 import './CreateTicket.css';
+import {Dropdown} from 'primereact/dropdown';
 
 const CreateTicket = () => {
 
@@ -88,20 +89,20 @@ const CreateTicket = () => {
             </div>
             }
             
-                   <label className="form-label mt-3" htmlFor="name">Customer Name</label>
-                    <select disabled={desc} name="name" className='form-select mb-3' value={ticket.customer} onInput={e => {setTicket({...ticket, customer:e.target.value})}}>
-                      {
-                        !desc ?
-                    <option value="" selected hidden>Select  a  Customer:</option>
-                    :
-                    <option value={ticket.customer} selected>{ticket.customer}</option>
-                      }
-                    {
-                      customers.map((customer) => (
-                        <option value={customer.name}>{customer.name}</option>
-                      ))
-                    }
-                    </select>
+        <div className="row">
+          <div className="col-6">
+        <label className="form-label mt-3" htmlFor="name">Customer Name</label>
+
+        <Dropdown value={ticket.customer}
+          onChange={(e) => {setTicket({...ticket,customer: e.value})}}
+          options={customers}
+          optionLabel="name"
+          placeholder="Select a customer"
+          filter
+          className="w-full mb-3"
+          />
+          </div>
+        </div>
 
             <label className="form-label" htmlFor="description">Description</label>
             <input value={ticket.desc} onInput={e => setTicket({...ticket, desc:e.target.value})} type="text" className='form-control mb-3' name="description"/>
