@@ -27,6 +27,13 @@
     background-color: rgb(87, 194, 87);
 }
 
+.row-black
+{
+    color: white;
+    background-color: black;
+}
+
+
 .btn-search
 {
     display: flex;

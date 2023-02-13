@@ -15,6 +15,9 @@ const CustomerList = () => {
     const [current, setCurrent] = useState(1);
     const navigate = useNavigate();
     const [total, setTotal] = useState();
+    const titles = ["All Entries","New","Accepted","Rejected"];
+    const order = [0,1,2,3];
+
 
     useEffect(() => {
       setCurrent(1);
@@ -33,11 +36,12 @@ const CustomerList = () => {
           let acceptedCount = res.records.filter(c => c.status === "Accepted").length;
           let rejectedCount = res.records.filter(c => c.status === "Rejected").length;
           let countObj = {
-            "new": newCount,
-            "accepted": acceptedCount,
-            "rejected": rejectedCount,
-            "total": res.records.length
+            "blue": newCount,
+            "green": acceptedCount,
+            "red": rejectedCount,
+            "yellow": res.records.length
           }
+
           setCount(countObj);
 
           let totalPage = Math.ceil(res.totalCount/100);
@@ -87,24 +91,24 @@ const CustomerList = () => {
         {
           let filteredCustomers =  customers.filter(customer => customer.name.toLowerCase().includes(val.toLowerCase()));
           setfilteredCustomers([...filteredCustomers]);
-          setCount({total: filteredCustomers.length,new: filteredCustomers.filter(c => c.status === "New").length, accepted: filteredCustomers.filter(c => c.status === "Accepted").length,
-          rejected: filteredCustomers.filter(c => c.status === "Rejected").length});
+          setCount({yellow: filteredCustomers.length,blue: filteredCustomers.filter(c => c.status === "New").length, green: filteredCustomers.filter(c => c.status === "Accepted").length,
+          red: filteredCustomers.filter(c => c.status === "Rejected").length});
         }
         else
         {
           setfilteredCustomers(customers);
-          setCount({total: customers.length,new: customers.filter(c => c.status === "New").length, accepted: customers.filter(c => c.status === "Accepted").length,
-          rejected: customers.filter(c => c.status === "Rejected").length});
+          setCount({yellow: customers.length,blue: customers.filter(c => c.status === "New").length, green: customers.filter(c => c.status === "Accepted").length,
+          red: customers.filter(c => c.status === "Rejected").length});
         }
     }
 
   return (
     <div className='customer-list'>
       <h1 className='mb-3'>Customer List</h1>
-      <Dashboard count = {count}/>
+      <Dashboard order={order} titles={titles} count={count}/>
       <div className='btn-search'>
         <Link className="btn btn-primary mb-3 mt-3" to="/form">Add new Customer</Link>
-         <Search searchInput={searchInput} handleInput={handleInput}/>
+         <Search handleInput={handleInput}/>
       </div>
       {
         filteredCustomers.length >0 ? 

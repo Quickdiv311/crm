@@ -9,17 +9,30 @@ const Ticket = () => {
 
   const [tickets, setTickets] = useState([]);
   const [filteredTickets, setFilteredTickets] = useState([]);
-  const [count, setCount] = useState();
-
-  const [searchInput, setSearchInput] = useState();
+  const [count, setCount] = useState({});
+  const titles = ["In Progress","New","Completed","Assigned","Total"];
+  const order = [3,1,4,2,0];
   let navigate = useNavigate();
 
   useEffect(() => {
      fetch("http://localhost:4000/api/ticket")
      .then(res => res.json())
      .then(res => 
-      {setTickets(res)
-       setFilteredTickets(res)
+      {setTickets(res);
+       setFilteredTickets(res);
+        let newC = res.filter(r => r.status==="New").length;
+        let CompeltedC = res.filter(r => r.status==="Completed").length;
+        let AssignedC = res.filter(r => r.status==="Assigned").length;
+        let inProgressC = res.filter(r => r.status==="In Progress").length;
+        let totalC = res.length;
+       let countO = {
+        "blue": newC,
+        "green": CompeltedC,
+        "red": AssignedC,
+        "yellow": inProgressC,
+        "black": totalC
+       }
+       setCount(countO);
       });
   },[]);
 
@@ -57,20 +70,24 @@ const Ticket = () => {
      {
       let result = tickets.filter(t => t.desc.toLowerCase().includes(value.toLowerCase()));
       setFilteredTickets(result);
+      setCount({yellow: filteredTickets.filter(c => c.status === "In Progress").length,blue: filteredTickets.filter(c => c.status === "New").length, green: filteredTickets.filter(c => c.status === "Completed").length,
+      red: filteredTickets.filter(c => c.status === "Assigned").length, black: result.length});
      }
      else
      {
        setFilteredTickets(tickets);
+       setCount({yellow: tickets.filter(c => c.status === "In Progress").length,blue: tickets.filter(c => c.status === "New").length, green: tickets.filter(c => c.status === "Completed").length,
+      red: tickets.filter(c => c.status === "Assigned").length, black: tickets.length});
      }
   }
 
   return (
    <div className="ticket-list">
     <h2>Tickets List</h2>
-    {/* <Dashboard count={count}/> */}
+    <Dashboard order={order} titles={titles} count={count}/>
     <div className="ticketList-header">
     <button className="btn btn-primary mt-3 mb-3" onClick={() => navigate("/ticketForm")}>Create New Ticket</button>
-    <Search searchInput={searchInput} handleInput={handleSearch}/>
+    <Search handleInput={handleSearch}/>
     </div>
      <table className="table mt-3">
         <thead>
@@ -91,7 +108,7 @@ const Ticket = () => {
                     <td>{ticket.customer}</td>
                     <td>{ticket.desc}</td>
                     <td>{ticket.status}</td>
-                    <td>{ticket.status!="New" && ticket.assignedTo}</td>
+                    <td>{ticket.status!=="New" && ticket.assignedTo}</td>
                     <td>{ticket.raisedOn}</td>
                     <td style={{backgroundColor: "white"}}>
                     <div className="btn-group">

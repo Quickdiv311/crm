@@ -60,19 +60,11 @@ const CreateTicket = () => {
 
   if(desc)
   {
-    fetch("http://localhost:4000/api/ticket")
-  .then(res => res.json())
-  .then(res => {
-    let r = res.find(i => i.desc === desc);
-
-    if(r)
-    {
-      setTicket(r);
-    }
-    console.log(r);
-  })  
-}
- },[]);
+    fetch("http://localhost:4000/api/ticket/"+desc)
+    .then(res=> res.json())
+    .then(parsedRes=> setTicket(parsedRes));
+  }
+},[]);
 
   return (
     <div>
@@ -93,8 +85,10 @@ const CreateTicket = () => {
           <div className="col-6">
         <label className="form-label mt-3" htmlFor="name">Customer Name</label>
 
-        <Dropdown value={ticket.customer}
-          onChange={(e) => {setTicket({...ticket,customer: e.value})}}
+        <Dropdown
+         disabled={desc}
+         value={customers.find(c => c.name == ticket.customer)}
+          onChange={(e) => {setTicket({...ticket,customer: e.value.name})}}
           options={customers}
           optionLabel="name"
           placeholder="Select a customer"
