@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import Header from '../../Header/Header';
+import Header from '../../shared/Header/Header';
 import './CreateTicket.css';
 import {Dropdown} from 'primereact/dropdown';
 

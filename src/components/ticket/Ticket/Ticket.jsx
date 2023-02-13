@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Search from '../../search/Search';
-import Dashboard from '../../Tiles/Dashboard';
+import Search from '../../shared/search/Search';
+import Dashboard from '../../shared/Tiles/Dashboard';
 import './Ticket.css';
 
 const Ticket = () => {

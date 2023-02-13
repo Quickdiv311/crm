@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../Header/Header';
+import Header from '../shared/Header/Header';
 import './UserForm.css';
 
 const UserForm = () => {

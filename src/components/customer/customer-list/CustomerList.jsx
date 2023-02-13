@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Paginator from '../../paginator/paginator';
-import Search from '../../search/Search';
-import Dashboard from '../../Tiles/Dashboard';
+import Search from '../../shared/search/Search';
+import Dashboard from '../../shared/Tiles/Dashboard';
 import './CustomerList.css';
 
 const CustomerList = () => {

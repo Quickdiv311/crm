@@ -3,7 +3,7 @@ import './App.css';
 import Customers from './pages/customers/Customers';
 import SignIn from './pages/signIn/signIn';
 import SignUp from './pages/signUp/signUp';
-import Secure from './components/secure/secure';
+import Secure from './components/shared/secure/secure';
 import Users from './pages/users/users';
 import UserForm from './components/user-form/UserForm';
 import Tickets from './pages/tickets/Tickets';

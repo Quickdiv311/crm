@@ -1,5 +1,5 @@
 import CustomerList from '../../components/customer/customer-list/CustomerList';
-import Header from '../../components/Header/Header';
+import Header from '../../components/shared/Header/Header';
 import './customers.css';
 
 
