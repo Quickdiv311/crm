@@ -15,7 +15,7 @@ const Ticket = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
-     fetch("http://localhost:4000/api/ticket")
+     fetch(process.env.REACT_APP_APIURL+"ticket")
      .then(res => res.json())
      .then(res => 
       {setTickets(res);

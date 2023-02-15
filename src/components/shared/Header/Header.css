@@ -8,13 +8,19 @@
     justify-content: space-between;
 }
 
+.left-header
+{
+    display: flex;
+    align-items: center;
+}
+
 .right-header
 {
     display: flex;
 }
 
 .topic{
-    margin-left: 20px;
+    margin-left: 80px;
     display: flex;
     align-items: center;
 }

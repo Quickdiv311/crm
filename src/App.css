@@ -62,8 +62,8 @@ main
 {
     background-color: black;
     color: white;
-    position: sticky;
-    height: 700vh;
+    position: fixed;
+    height: 100vh;
     margin-left: 0;
 }
 

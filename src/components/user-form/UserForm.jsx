@@ -11,7 +11,7 @@ const UserForm = () => {
  
  function handleSubmit()
  {
-    fetch("http://localhost:4000/api/user/signup", {
+    fetch(process.env.REACT_APP_APIURL+"user/signup", {
     method: "POST",
     body: JSON.stringify(user),
     headers: {
@@ -23,7 +23,7 @@ const UserForm = () => {
 
   return (
     <div>
-      <Header/>
+      
     <div className='userform-container'>
        <h2 className='mb-3'>User Form</h2>
       <label htmlFor="name" className='mb-2 mt-3'>Name</label>

@@ -24,7 +24,7 @@ const CreateTicket = () => {
     }
     else
     {
-      fetch("http://localhost:4000/api/ticket",
+      fetch(process.env.REACT_APP_APIURL+"ticket",
       {
           method: "POST",
           body: JSON.stringify(ticket),
@@ -38,7 +38,7 @@ const CreateTicket = () => {
 
  function handleEdit()
  {
-  fetch("http://localhost:4000/api/ticket",
+  fetch(process.env.REACT_APP_APIURL+"ticket",
       {
           method: "PUT",
           body: JSON.stringify(ticket),
@@ -50,17 +50,17 @@ const CreateTicket = () => {
  }
 
  useEffect(() => {
-  fetch("http://localhost:4000/api/customer")
+  fetch(process.env.REACT_APP_APIURL+"customer")
   .then(res => res.json())
   .then(res => setCustomers(res));
 
-  fetch("http://localhost:4000/api/user")
+  fetch(process.env.REACT_APP_APIURL+"user")
   .then(res => res.json())
   .then(res => setUsers(res));
 
   if(desc)
   {
-    fetch("http://localhost:4000/api/ticket/"+desc)
+    fetch(process.env.REACT_APP_APIURL+"ticket/"+desc)
     .then(res=> res.json())
     .then(parsedRes=> setTicket(parsedRes));
   }
@@ -68,7 +68,7 @@ const CreateTicket = () => {
 
   return (
     <div>
-        <Header/>
+        
         <div className="create-ticket">
             <h3>
                 Create a new Ticket

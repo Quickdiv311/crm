@@ -5,7 +5,7 @@ import Ticket from '../../components/ticket/Ticket/Ticket';
 const Tickets = () => {
   return (
     <div>
-      <Header/>
+      
       <Ticket/>
     </div>
   );

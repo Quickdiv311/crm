@@ -10,14 +10,14 @@ const Users = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
-     fetch("http://localhost:4000/api/user")
+     fetch(process.env.REACT_APP_APIURL+"user")
      .then((res) => res.json())
      .then((res) => setUsers(res));
   },[])
 
   function handleActive(username)
   {
-    fetch("http://localhost:4000/api/user/activate/"+username,{
+    fetch(process.env.REACT_APP_APIURL+"user/activate/"+username,{
       method: "PUT",
     })
     .then((res) => res.json())
@@ -26,7 +26,7 @@ const Users = () => {
 
   function handleDeactive(username)
   {
-    fetch("http://localhost:4000/api/user/deActivate/"+username,{
+    fetch(process.env.REACT_APP_APIURL+"user/deActivate/"+username,{
       method: "PUT",
     })
     .then((res) => res.json())
@@ -36,7 +36,7 @@ const Users = () => {
 
   return (
     <div>
-        <Header/>
+        
     <div className='users-container'>
     <h1 className='mb-3'>User List</h1>
     <button className="btn btn-primary mb-3 mt-3" onClick={() => {navigate("/userForm")}}>Add New User</button>

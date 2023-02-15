@@ -15,7 +15,7 @@ const CustomerForm = () => {
 
     if(customerName)
     {
-      fetch("http://localhost:4000/api/customer/"+customerName)
+      fetch(process.env.REACT_APP_APIURL+"customer/"+customerName)
       .then(res => res.json())
       .then((res) => {
          setCustomer(res);
@@ -32,7 +32,7 @@ const CustomerForm = () => {
   function handleSubmit()
   {
     console.log(customer);
-    fetch("http://localhost:4000/api/customer",{
+    fetch(process.env.REACT_APP_APIURL+"customer",{
       method: "POST",
       body: JSON.stringify(customer),
       headers: {
@@ -44,7 +44,7 @@ const CustomerForm = () => {
 
   function handleEdit()
   {
-    fetch("http://localhost:4000/api/customer",{
+    fetch(process.env.REACT_APP_APIURL+"customer",{
       method: "PUT",
       body: JSON.stringify(customer),
       headers: {
@@ -56,7 +56,7 @@ const CustomerForm = () => {
 
   return (
     <div className="new-customer">
-      <Header/>
+      
      
     <div className='customer-form'>
       <h3 className='mb-3'>Add a new customer</h3>

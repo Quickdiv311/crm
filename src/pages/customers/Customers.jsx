@@ -6,7 +6,6 @@ import './customers.css';
 function Customers(){
   return (
     <div className="customers-page">
-      <Header/>
       <CustomerList/>
     </div>
   );
