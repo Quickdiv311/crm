@@ -33,10 +33,37 @@ tr .btn-danger:hover
     color: white;
 }
 
+*
+{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+.container-fluid
+{
+    display: flex;
+    padding: 0px;
+}
+
 tr .btn-danger
 {
     background-color: red;
     color: black;
     border: none;
+}
+
+main
+{
+    width: 100%;
+}
+
+.sidebar
+{
+    background-color: black;
+    color: white;
+    position: sticky;
+    height: 700vh;
+    margin-left: 0;
 }
 

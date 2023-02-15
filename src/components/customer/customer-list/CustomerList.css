@@ -1,6 +1,6 @@
 .customer-list
 {
-    margin: 6% 20%;
+    margin: 6% 12%;
 }
 
 .customer-list h3{
@@ -39,7 +39,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-right: 70px;
+    width: 83%;
 }
 
 

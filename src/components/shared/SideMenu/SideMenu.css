@@ -1,0 +1,55 @@
+.top-section
+{
+    display: flex;
+    padding: 7px 15px;
+    align-items: center;
+}
+
+.logo
+{
+    margin-left: 10px;
+}
+
+.bars
+{
+    font-size: 25px;
+}
+
+.menu-items
+{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.link
+{
+    display: flex;
+    color: white;
+    padding: 10px;
+    align-items: center;
+    outline: none;
+    transition: ease-out 0.5s;
+}
+
+.icon{
+    font-size: 20px;
+}
+
+.link_text
+{
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.link:hover{
+    background-color: lightblue;
+    color: black;
+    transition: ease-out 0.5s;
+}
+
+.active
+{
+    background-color: aqua !important;
+    color: black !important;
+}

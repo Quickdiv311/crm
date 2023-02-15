@@ -32,8 +32,6 @@ const Header = () => {
   return (
     <div className='main-header'>
        <span className='topic'><h4><Link to="/">CRM</Link></h4>
-       <h4 className='users-topic'><Link to="/users">Users</Link></h4>
-       <h4 className='users-topic'><Link to="/ticket">Tickets</Link></h4>
       
        </span>
     { 
