@@ -101,10 +101,22 @@ const CustomerList = () => {
         }
     }
 
+    function handleClick(value)
+    {
+      if(value == "All Entries")
+      {
+        setfilteredCustomers(customers);
+      }
+      else{
+        let filtered = customers.filter(customer => customer.status == value);
+        setfilteredCustomers([...filtered]);
+      }
+    }
+
   return (
     <div className='customer-list'>
       <h1 className='mb-3'>Customer List</h1>
-      <Dashboard order={order} titles={titles} count={count}/>
+      <Dashboard order={order} titles={titles} count={count} handleClick={handleClick}/>
       <div className='btn-search'>
         <Link className="btn btn-primary mb-3 mt-3" to="/form">Add new Customer</Link>
          <Search handleInput={handleInput}/>

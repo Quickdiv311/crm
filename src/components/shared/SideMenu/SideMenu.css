@@ -12,7 +12,7 @@
 
 .bars
 {
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .menu-items
@@ -52,4 +52,9 @@
 {
     background-color: aqua !important;
     color: black !important;
+}
+
+main
+{
+    margin-left: 50px;
 }

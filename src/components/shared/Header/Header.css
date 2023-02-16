@@ -1,18 +1,15 @@
 .main-header
 {
     display: flex;
-    height: 60px;
+    height: 50px;
     background-color: black;
     color: white;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
+    width: 98%;
 }
 
-.left-header
-{
-    display: flex;
-    align-items: center;
-}
 
 .right-header
 {
@@ -20,9 +17,9 @@
 }
 
 .topic{
-    margin-left: 80px;
     display: flex;
     align-items: center;
+    margin-left: 20px;
 }
 
 .users-topic

@@ -81,10 +81,22 @@ const Ticket = () => {
      }
   }
 
+  function handleClick(value)
+  {
+    if(value == "Total")
+    {
+      setFilteredTickets(tickets);
+    }
+    else{
+      let filtered = tickets.filter(ticket => ticket.status == value);
+      setFilteredTickets([...filtered]);
+    }
+  }
+
   return (
    <div className="ticket-list">
     <h2>Tickets List</h2>
-    <Dashboard order={order} titles={titles} count={count}/>
+    <Dashboard order={order} titles={titles} count={count} handleClick={handleClick}/>
     <div className="ticketList-header">
     <button className="btn btn-primary mt-3 mb-3" onClick={() => navigate("/ticketForm")}>Create New Ticket</button>
     <Search handleInput={handleSearch}/>
